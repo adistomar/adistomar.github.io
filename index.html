@@ -10,17 +10,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" integrity="sha384-FpDZZVvMo/VgX2RxnM1VZmF2W7CRJHq6Aw1v8+N+MJKiK6Z0Akk0JtB9Xu3oOqF5" crossorigin="anonymous">
-
+  <!-- Font-Awesome still needed for the copy icon -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"
+        integrity="sha384-FpDZZVvMo/VgX2RxnM1VZmF2W7CRJHq6Aw1v8+N+MJKiK6Z0Akk0JtB9Xu3oOqF5" crossorigin="anonymous">
 
   <style>
     /* ───────── CSS VARIABLES ───────── */
     :root{
-      --text             : #111827;
-      --muted            : #374151;
-      --border           : #d1d5db;
-      --brand-blue       : #0ea5e9;   /* light blue for contact-links */
-      --author-gray      : #6b7280;   /* gray for non-Aditya authors   */
+      --text        : #111827;
+      --muted       : #374151;
+      --border      : #d1d5db;
+      --brand-blue  : #0ea5e9;   /* contact-link colour                */
+      --author-gray : #6b7280;   /* non-Aditya authors                 */
     }
 
     /* ───────── RESET / BASICS ───────── */
@@ -38,54 +39,56 @@
 
     /* ───────── INTRO ───────── */
     .intro{display:flex;flex-wrap:wrap;gap:2rem}
+
     .intro-text{flex:1 1 340px;min-width:280px}
     .intro-text h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}
+
+    /* avatar / side-column */
+    .intro-side{flex:0 0 220px;display:flex;flex-direction:column;align-items:center}
     .avatar{
-      flex:0 0 220px;width:220px;height:220px;
-      object-fit:cover;border-radius:4px
+      width:220px;height:220px;border-radius:4px;object-fit:cover
+    }
+    .email-text{
+      margin-top:.85rem;
+      font-family:"Courier New",Courier,monospace;
+      font-size:.9rem;line-height:1.4;text-align:center;
+      color:var(--muted)
     }
 
-      .contact-links a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-weight: 500;
-        margin-right: 1.4rem;
-        color: var(--brand-blue);
-      }
+    /* contact links */
+    .contact-links{
+      display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.2rem
+    }
+    .contact-links a{
+      display:inline-flex;align-items:center;gap:.45rem;font-weight:500;
+      color:var(--brand-blue)
+    }
+    .contact-links img.icon{width:18px;height:18px;object-fit:contain}
 
     /* ───────── PUBLICATIONS ───────── */
     #publications{margin-top:3rem}
     #publications h2{font-size:1.75rem;font-weight:600;margin-bottom:1.5rem}
 
     .pub-item{display:flex;gap:1.25rem;margin-bottom:2.25rem;align-items:flex-start}
-    /*  ↳ reverted thumbnail size */
-    .pub-thumb {
-      flex: 0 0 160px;
-      width: 160px;
-      height: 110px;
-      object-fit: scale-down; /* allows natural size unless too big */
-      background: #f9fafb;
-      border: 1px solid var(--border);
-      border-radius: 4px;
+
+    .pub-thumb{
+      flex:0 0 160px;width:160px;height:110px;
+      object-fit:scale-down;background:#f9fafb;
+      border:1px solid var(--border);border-radius:4px;
     }
 
     .pub-info{flex:1 1 auto}
-    .pub-title{
-      font-size:1.125rem;font-weight:700;  /* bold, not green */
-      margin-bottom:.25rem;
-    }
-    .pub-title a,
-    .pub-title a:hover,
-    .pub-title a:focus {
-      color: var(--text);     /* same colour as body text */
-      text-decoration: none;  /* never underline */
-    }
+    .pub-title{font-size:1.125rem;font-weight:700;margin-bottom:.25rem}
+    .pub-title a{color:var(--text);text-decoration:none}
+    .pub-title a:hover{text-decoration:none}
 
-    /* author line styles */
-    .pub-authors{margin-bottom:.25rem}
-    .pub-authors .self{font-weight:600}          /* Aditya Tomar → bold & normal text colour */
-    .pub-authors .other{color:var(--author-gray)}/* everyone else → gray */
+    /* authors */
+    .pub-authors{
+      margin-bottom:.25rem;
+      font-size:0.9rem;
+    }
+    .pub-authors .self{font-weight:600}
+    .pub-authors .other{color:var(--author-gray)}
 
     .pub-venue{margin-bottom:.8rem;font-style:italic;color:var(--muted)}
 
@@ -93,16 +96,16 @@
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
       min-width:64px;padding:.35rem .9rem;line-height:1.2;
-      font-size:.8rem;font-weight:500;background:#fff;color:var(--text);
+      font-size:.8rem;font-weight:500;
+      background:#fff;color:var(--text);
       border:1px solid var(--border);border-radius:4px;cursor:pointer
     }
     .btn:hover{background:#f3f4f6}
+    /* force PDF link (anchor) to inherit neutral colour */
+    a.btn:link,a.btn:visited{color:var(--text) !important}
 
     /* ───────── MODAL ───────── */
-    .modal{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(0,0,0,.5)
-    }
+    .modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.5)}
     .modal-content{
       background:#fff;border-radius:4px;padding:20px;position:relative;
       width:90%;max-width:700px;margin:8% auto
@@ -113,7 +116,6 @@
     }
     .close:hover{color:#000}
 
-    /* copy icon */
     .copy-btn{
       position:absolute;top:12px;right:56px;
       background:none;border:none;font-size:1.05rem;cursor:pointer
@@ -121,18 +123,24 @@
     .copy-btn i{color:var(--text)}
     .copy-btn:hover i{color:var(--brand-blue)}
 
-    /* bib text */
     .modal-content pre{
       margin-top:1rem;padding:1rem;border-radius:4px;
-      background:#fdfcff;white-space:pre;overflow-x:auto; /* horizontal scroll */
+      background:#fdfcff;white-space:pre;overflow-x:auto
+    }
+
+    .highlight-red {
+      color: #e11d48;
+      font-style: italic;
     }
 
     /* ───────── SMALL SCREENS ───────── */
     @media (max-width:640px){
+      .intro-side{margin-inline:auto}
       .avatar{margin-inline:auto}
       .pub-thumb{flex:0 0 140px;width:140px;height:100px}
     }
   </style>
+
 </head>
 <body>
 
@@ -144,25 +152,35 @@
         <h1>Aditya Tomar</h1>
         <p>I'm a 3rd year undergraduate at UC Berkeley studying Computer Science.</p>
         <br>
-        <p>My research broadly lies
-          in efficient maching learning with a focus on inference and quantization. Currently, I'm working
-          at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a> under
-          <a href="https://people.eecs.berkeley.edu/~keutzer/" target="_blank" rel="noopener">Prof. Kurt Keutzer</a> on the above.
-          Previously, I had the pleasure of working under <a href="https://www.cs.umd.edu/~bhatele/" target="_blank"
-          rel="noopener">Prof. Abhinav Bhatele</a> at <a href="https://pssg.cs.umd.edu/" target="_blank" rel="noopener">PSSG</a> 
-            on memory efficient adaptive optimization algorithms and efficient parallel training methods for LLMs.
+        <p>My research broadly lies in efficient maching learning with a focus on inference and quantization.
+          Currently, I'm working at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a> under
+          <a href="https://people.eecs.berkeley.edu/~keutzer/" target="_blank" rel="noopener">Prof. Kurt&nbsp;Keutzer</a>.
+          Previously, I had the pleasure of working under
+          <a href="https://www.cs.umd.edu/~bhatele/" target="_blank" rel="noopener">Prof. Abhinav&nbsp;Bhatele</a>
+          at <a href="https://pssg.cs.umd.edu/" target="_blank" rel="noopener">PSSG</a> on memory-efficient adaptive
+          optimisation algorithms and efficient parallel training methods for LLMs.
         </p>
 
         <br>
-        <p class="contact-links">
-          <a href="mailto:adityatomar@berkeley.edu"><i class="fas fa-envelope"></i>Email</a>
-          <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-          <a href="https://www.linkedin.com/in/aditya-s-tomar/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i>LinkedIn</a>
-          <a href="https://x.com/adityastomar_" target="_blank" rel="noopener"><i class="fab fa-twitter"></i>Twitter</a>
-        </p>
+        <!-- contact links (email removed) -->
+        <div class="contact-links">
+          <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en" target="_blank" rel="noopener">
+            <img src="media/scholar_icon.png" class="icon" alt="Google Scholar icon">Google&nbsp;Scholar
+          </a>
+          <a href="https://www.linkedin.com/in/aditya-s-tomar/" target="_blank" rel="noopener">
+            <img src="media/linkedin_icon.png" class="icon" alt="LinkedIn icon">LinkedIn
+          </a>
+          <a href="https://x.com/adityastomar_" target="_blank" rel="noopener">
+            <img src="media/twitter_icon.png" class="icon" alt="Twitter icon">Twitter
+          </a>
+        </div>
       </div>
 
-      <img src="media/adityatomar.jpg" alt="Aditya Tomar" class="avatar"/>
+      <!-- avatar & email column -->
+      <div class="intro-side">
+        <img src="media/adityatomar.jpg" alt="Aditya Tomar" class="avatar">
+        <p class="email-text">adityatomar&nbsp;at<br>berkeley&nbsp;dot&nbsp;edu</p>
+      </div>
     </section>
 
     <!-- ── PUBLICATIONS ──────────────────────────────────── -->
@@ -170,32 +188,101 @@
       <h2>publications</h2>
 
       <article class="pub-item">
-        <img src="media/quantspec_thumbnail.png" alt="QuantSpec thumbnail" class="pub-thumb"/>
+        <img src="media/quantspec_thumbnail.png" alt="QuantSpec thumbnail" class="pub-thumb">
         <div class="pub-info">
           <h3 class="pub-title">
             <a href="#">QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache</a>
           </h3>
-
-          <!-- wrap authors so we can style mine vs others -->
           <p class="pub-authors">
-            <span class="other">Rishabh Tiwari*</span>, 
-            <span class="other">Haocheng Xi*</span>, 
-            <span class="self">Aditya Tomar*</span>, 
-            <span class="other">Coleman Hooper</span>, 
-            <span class="other">Sehoon Kim</span>, 
-            <span class="other">Maxwell Horton</span>, 
-            <span class="other">Mahyar Najibi</span>, 
-            <span class="other">Michael W. Mahoney</span>, 
-            <span class="other">Kurt Keutzer</span>, 
-            <span class="other">Amir Gholami</span>
+            <span class="other">Rishabh&nbsp;Tiwari*</span>,
+            <span class="other">Haocheng&nbsp;Xi*</span>,
+            <span class="self">Aditya&nbsp;Tomar*</span>,
+            <span class="other">Coleman&nbsp;Hooper</span>,
+            <span class="other">Sehoon&nbsp;Kim</span>,
+            <span class="other">Maxwell&nbsp;Horton</span>,
+            <span class="other">Mahyar&nbsp;Najibi</span>,
+            <span class="other">Michael&nbsp;W.&nbsp;Mahoney</span>,
+            <span class="other">Kurt&nbsp;Keutzer</span>,
+            <span class="other">Amir&nbsp;Gholami</span>
           </p>
-
           <p class="pub-venue">ICML&nbsp;2025</p>
 
           <button class="btn" onclick="showBibModal()">BIB</button>
-          <a class="btn" href="https://openreview.net/pdf?id=7SHbJENgHX" target="_blank">PDF</a>
+          <a class="btn" href="https://openreview.net/pdf?id=7SHbJENgHX" target="_blank" rel="noopener">PDF</a>
         </div>
       </article>
+
+      <article class="pub-item">
+        <img src="media/axonn_gb_thumbnail.png" alt="SC24 thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Democratizing AI: Open-source Scalable LLM Training on GPU-based Supercomputers</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="other">Siddharth&nbsp;Singh</span>,
+            <span class="other">Prajwal&nbsp;Singhania</span>,
+            <span class="other">Aditya&nbsp;Ranjan</span>,
+            <span class="other">John&nbsp;Kirchenbauer</span>,
+            <span class="other">Jonas&nbsp;Geiping</span>,
+            <span class="other">Yuxin&nbsp;Wen</span>,
+            <span class="other">Neel&nbsp;Jain</span>,
+            <span class="other">Abhimanyu&nbsp;Hans</span>,
+            <span class="other">Manli&nbsp;Shu</span>,
+            <span class="self">Aditya&nbsp;Tomar</span>,
+            <span class="other">Tom&nbsp;Goldstein</span>,
+            <span class="other">Abhinav&nbsp;Bhatele</span>
+          </p>
+          <p class="pub-venue">
+            <span class="highlight-red">(Gordon Bell Finalist Paper)</span>
+            SC&nbsp;2024
+          </p>
+      
+          <button class="btn" onclick="showBibModal2()">BIB</button>
+          <a class="btn" href="https://arxiv.org/pdf/2502.08145" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub-item">
+        <img src="media/chopper_thumbnail.png" alt="Programmatic Performance thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Automated Programmatic Performance Analysis of Parallel Programs</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="other">Onur&nbsp;Cankur</span>,
+            <span class="self">Aditya&nbsp;Tomar</span>,
+            <span class="other">Daniel&nbsp;Nichols</span>,
+            <span class="other">Connor&nbsp;Scully-Allison</span>,
+            <span class="other">Katherine&nbsp;E.&nbsp;Isaacs</span>,
+            <span class="other">Abhinav&nbsp;Bhatele</span>
+          </p>
+          <p class="pub-venue">Under Review</p>
+      
+          <button class="btn" onclick="showBibModal3()">BIB</button>
+          <a class="btn" href="https://arxiv.org/pdf/2401.13150" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub-item">
+        <img src="media/eve_thumbnail.png" alt="Eve thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Eve: Less Memory, Same Might</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="self">Aditya&nbsp;Tomar</span>,
+            <span class="other">Siddharth&nbsp;Singh</span>,
+            <span class="other">Tom&nbsp;Goldstein</span>,
+            <span class="other">Abhinav&nbsp;Bhatele</span>
+          </p>
+          <p class="pub-venue">(ACM SRC Poster) SC&nbsp;2024</p>
+      
+          <button class="btn" onclick="showBibModal4()">BIB</button>
+          <a class="btn" href="https://sc24.supercomputing.org/proceedings/poster/poster_files/post116s2-file3.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+
 
     </section><!-- /publications -->
 
@@ -210,20 +297,88 @@
       <span class="close" onclick="closeBibModal()" aria-label="Close">&times;</span>
 
       <h3 id="bibLabel">Citation</h3>
-      <pre id="bibText">@inproceedings{tiwari2025quantspec,
-  title={QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache},
-  author={Tiwari, Rishabh and Xi, Haocheng and Tomar, Aditya and Hooper, Coleman and Kim, Sehoon and Horton, Maxwell and Najibi, Mahyar and Mahoney, Michael W and Keutzer, Kurt and Gholami, Amir},
-  booktitle={International Conference on Machine Learning},
-  year={2025}
+<pre id="bibText">@inproceedings{tiwari2025quantspec,
+  title     = {QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache},
+  author    = {Tiwari, Rishabh and Xi, Haocheng and Tomar, Aditya and Hooper, Coleman
+               and Kim, Sehoon and Horton, Maxwell and Najibi, Mahyar and Mahoney,
+               Michael W and Keutzer, Kurt and Gholami, Amir},
+  booktitle = {International Conference on Machine Learning},
+  year      = {2025}
 }</pre>
     </div>
   </div>
+  <div id="bibModal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel2">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib2()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal2()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel2">Citation</h3>
+  <pre id="bibText2">@inproceedings{singh:sc2024,
+    author    = {Singh, Siddharth and Singhania, Prajwal and Ranjan, Aditya and
+                 Kirchenbauer, John and Geiping, Jonas and Wen, Yuxin and Jain, Neel and
+                 Hans, Abhimanyu and Shu, Manli and Tomar, Aditya and Goldstein, Tom and
+                 Bhatele, Abhinav},
+    title     = {Democratizing {AI}: Open-source Scalable {LLM} Training on {GPU}-based Supercomputers},
+    booktitle = {Proceedings of the ACM/IEEE International Conference for High Performance Computing, Networking, Storage and Analysis},
+    series    = {SC '24},
+    year      = {2024},
+    month     = nov,
+  }</pre>
+    </div>
+  </div>
+  <div id="bibModal3" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel3">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib3()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal3()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel3">Citation</h3>
+  <pre id="bibText3">@misc{cankur2024automatedprogrammaticperformanceanalysis,
+    title         = {Automated Programmatic Performance Analysis of Parallel Programs},
+    author        = {Onur Cankur and Aditya Tomar and Daniel Nichols and Connor Scully-Allison and Katherine E. Isaacs and Abhinav Bhatele},
+    year          = {2024},
+    eprint        = {2401.13150},
+    archivePrefix = {arXiv},
+    primaryClass  = {cs.DC},
+    url           = {https://arxiv.org/abs/2401.13150}
+  }</pre>
+    </div>
+  </div>
+
+  <div id="bibModal4" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel4">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib4()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal4()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel4">Citation</h3>
+  <pre id="bibText4">@article{tomar2024eve,
+    title  = {Eve: Less Memory, Same Might},
+    author = {Tomar, Aditya and Singh, Siddharth and Goldstein, Tom and Bhatele, Abhinav},
+    year   = {2024}
+  }</pre>
+    </div>
+  </div>
+
+
+
 
   <!-- ── SCRIPT ──────────────────────────────────────────── -->
   <script>
     /* modal controls */
     function showBibModal(){ document.getElementById('bibModal').style.display='block'; }
     function closeBibModal(){ document.getElementById('bibModal').style.display='none'; }
+    function showBibModal2(){ document.getElementById('bibModal2').style.display='block'; }
+    function closeBibModal2(){ document.getElementById('bibModal2').style.display='none'; }
+    function copyBib2(){
+      navigator.clipboard.writeText(document.getElementById('bibText2').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
 
     /* copy-to-clipboard */
     function copyBib(){
@@ -232,7 +387,24 @@
         .catch(err=>console.error('Copy failed',err));
     }
 
-    /* close modal when clicking backdrop */
+    function showBibModal3(){ document.getElementById('bibModal3').style.display='block'; }
+    function closeBibModal3(){ document.getElementById('bibModal3').style.display='none'; }
+    function copyBib3(){
+      navigator.clipboard.writeText(document.getElementById('bibText3').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
+
+    function showBibModal4(){ document.getElementById('bibModal4').style.display='block'; }
+    function closeBibModal4(){ document.getElementById('bibModal4').style.display='none'; }
+    function copyBib4(){
+      navigator.clipboard.writeText(document.getElementById('bibText4').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
+
+
+    /* close modal when backdrop clicked */
     window.addEventListener('click',e=>{
       const m=document.getElementById('bibModal');
       if(e.target===m) m.style.display='none';
