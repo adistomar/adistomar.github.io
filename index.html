@@ -10,11 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome 6.5 -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-dBwexvYCN1SkOm5J038XSLo/95V+1ZeRAgK+e5D0wGw2S9OEtU4q5qowY6Bb+WYMGKEncxg4Hh4WYoXkkYKy3g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" integrity="sha384-FpDZZVvMo/VgX2RxnM1VZmF2W7CRJHq6Aw1v8+N+MJKiK6Z0Akk0JtB9Xu3oOqF5" crossorigin="anonymous">
+
 
   <style>
     /* ───────── CSS VARIABLES ───────── */
@@ -34,6 +31,7 @@
     }
     a{color:inherit;text-decoration:none}
     a:hover{text-decoration:underline}
+    a[href]{color:var(--brand-blue)}
 
     /* ───────── LAYOUT ───────── */
     .wrapper{max-width:820px;margin-inline:auto;padding:2rem 1rem 4rem}
@@ -47,13 +45,14 @@
       object-fit:cover;border-radius:4px
     }
 
-    /* contact links */
-    .contact-links a{
-      display:inline-flex;align-items:center;gap:.4rem;
-      font-weight:500;margin-right:1.4rem;
-      color:var(--brand-blue);
-    }
-    .contact-links i{font-size:1rem}
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 500;
+        margin-right: 1.4rem;
+        color: var(--brand-blue);
+      }
 
     /* ───────── PUBLICATIONS ───────── */
     #publications{margin-top:3rem}
@@ -61,10 +60,14 @@
 
     .pub-item{display:flex;gap:1.25rem;margin-bottom:2.25rem;align-items:flex-start}
     /*  ↳ reverted thumbnail size */
-    .pub-thumb{
-      flex:0 0 160px;width:160px;height:110px;
-      object-fit:cover;border:1px solid var(--border);border-radius:4px;
-      background:#f9fafb;
+    .pub-thumb {
+      flex: 0 0 160px;
+      width: 160px;
+      height: 110px;
+      object-fit: scale-down; /* allows natural size unless too big */
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 4px;
     }
 
     .pub-info{flex:1 1 auto}
@@ -139,8 +142,18 @@
     <section class="intro">
       <div class="intro-text">
         <h1>Aditya Tomar</h1>
-        <p>I'm a 3<sup>rd</sup>-year undergraduate at UC Berkeley, studying Computer Science.</p>
+        <p>I'm a 3rd year undergraduate at UC Berkeley studying Computer Science.</p>
+        <br>
+        <p>My research broadly lies
+          in efficient maching learning with a focus on inference and quantization. Currently, I'm working
+          at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a> under
+          <a href="https://people.eecs.berkeley.edu/~keutzer/" target="_blank" rel="noopener">Prof. Kurt Keutzer</a> on the above.
+          Previously, I had the pleasure of working under <a href="https://www.cs.umd.edu/~bhatele/" target="_blank"
+          rel="noopener">Prof. Abhinav Bhatele</a> at <a href="https://pssg.cs.umd.edu/" target="_blank" rel="noopener">PSSG</a> 
+            on memory efficient adaptive optimization algorithms and efficient parallel training methods for LLMs.
+        </p>
 
+        <br>
         <p class="contact-links">
           <a href="mailto:adityatomar@berkeley.edu"><i class="fas fa-envelope"></i>Email</a>
           <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
