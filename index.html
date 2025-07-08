@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dBwexvYCN1SkOm5J038XSLo/95V+1ZeRAgK+e5D0wGw2S9OEtU4q5qowY6Bb+WYMGKEncxg4Hh4WYoXkkYKy3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
       :root {
         --text: #111827;
@@ -44,15 +47,6 @@
         padding: 2rem 1rem 4rem;
       }
 
-      /* Navigation */
-      nav {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1.25rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-      }
-
       /* Intro section */
       .intro {
         display: flex;
@@ -79,6 +73,18 @@
         height: 220px;
         border-radius: 4px;
         object-fit: cover;
+      }
+
+      /* Contact links */
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 500;
+        margin-right: 1.5rem;
+      }
+      .contact-links i {
+        font-size: 0.95rem;
       }
 
       /* Publications */
@@ -139,13 +145,43 @@
         background: #f3f4f6;
       }
 
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 4px;
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #000;
+      }
+
       /* Responsive tweak */
       @media (max-width: 640px) {
         .avatar {
           margin: 0 auto;
-        }
-        nav {
-          justify-content: center;
         }
       }
     </style>
@@ -157,22 +193,27 @@
         <div class="intro-text">
           <h1>Aditya Tomar</h1>
           <p>
-            I'm a 3rd year undergrad at UC Berkeley, studying computer science.
+            I'm a 3rd-year undergraduate at UC Berkeley, studying Computer Science.
           </p>
-          <!-- <p>
-            no interests
-          </p>
-          <p>
-            goated
-          </p>
-          <p>
-            ok
-          </p> -->
-          <p>
-            <a href="mailto:adityatomar@berkeley.edu"><img src="media/email_icon.png" alt="Email" /></a> |
-            <a href="#">linkedin</a> |
-            <a href="#">scholar</a> |
-            <a href="#">github</a>
+
+          <!-- Contact links with icons -->
+          <p class="contact-links">
+            <a href="mailto:adityatomar@berkeley.edu">
+              <span class="icon"><i class="fas fa-envelope"></i></span>
+              Email
+            </a>
+            <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en/" target="_blank" rel="noopener">
+              <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+              Google Scholar
+            </a>
+            <a href="https://www.linkedin.com/in/aditya-s-tomar/" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-linkedin"></i></span>
+              LinkedIn
+            </a>
+            <a href="https://x.com/adityastomar_" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-twitter"></i></span>
+              Twitter
+            </a>
           </p>
         </div>
         <!-- Square avatar -->
@@ -181,27 +222,57 @@
 
       <!-- Publications -->
       <section id="publications">
-        <h2>selected publications</h2>
+        <h2>publications</h2>
 
         <!-- Publication 1 -->
         <article class="pub-item">
-          <img src="img/pub1.png" alt="QuantSpec thumbnail" class="pub-thumb" />
+          <img src="media/quantspec_thumbnail.png" alt="QuantSpec thumbnail" class="pub-thumb" />
           <div class="pub-info">
             <h3 class="pub-title">
               <a href="#">QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache</a>
             </h3>
             <p class="pub-authors">
-              <a href="#">Rishabh Tiwari</a>, Haocheng Xi, Aditya Tomar, and <a href="#">7 more authors</a>
+              Rishabh Tiwari*, Haocheng Xi*, Aditya Tomar*, Coleman Hooper, Sehoon Kim, Maxwell Horton, Mahyar Najibi, Michael W. Mahoney, Kurt Keutzer, Amir Gholami
             </p>
-            <p class="pub-venue"><em>Under Review, 2025</em></p>
+            <p class="pub-venue"><em>ICML, 2025</em></p>
             <div class="pub-links">
-              <a href="#" class="btn">BIB</a>
-              <a href="#" class="btn">PDF</a>
+              <a href="#" class="btn" onclick="showBibModal()">BIB</a>
+              <a href="https://openreview.net/pdf?id=7SHbJENgHX" class="btn">PDF</a>
             </div>
           </div>
         </article>
       </section>
     </div>
+
+    <!-- Citation Modal -->
+    <div id="bibModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeBibModal()">&times;</span>
+        <h3>Citation</h3>
+        <pre>@inproceedings{tiwari2025quantspec,
+  title={QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache},
+  author={Tiwari, Rishabh and Xi, Haocheng and Tomar, Aditya and Hooper, Coleman and Kim, Sehoon and Horton, Maxwell and Najibi, Mahyar and Mahoney, Michael W and Keutzer, Kurt and Gholami, Amir},
+  booktitle={International Conference on Machine Learning},
+  year={2025}
+}</pre>
+      </div>
+    </div>
+
+    <script>
+      function showBibModal() {
+        document.getElementById('bibModal').style.display = 'block';
+      }
+
+      function closeBibModal() {
+        document.getElementById('bibModal').style.display = 'none';
+      }
+
+      window.onclick = function (event) {
+        var modal = document.getElementById('bibModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+    </script>
   </body>
 </html>
-
