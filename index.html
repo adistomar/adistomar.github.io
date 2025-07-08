@@ -6,12 +6,18 @@
     <title>Aditya Tomar</title>
 
     <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dBwexvYCN1SkOm5J038XSLo/95V+1ZeRAgK+e5D0wGw2S9OEtU4q5qowY6Bb+WYMGKEncxg4Hh4WYoXkkYKy3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-dBwexvYCN1SkOm5J038XSLo/95V+1ZeRAgK+e5D0wGw2S9OEtU4q5qowY6Bb+WYMGKEncxg4Hh4WYoXkkYKy3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
       :root {
@@ -19,6 +25,7 @@
         --link: #065f46;
         --muted: #374151;
         --border: #d1d5db;
+        --contact-link: #1e40af; /* New blue color for contact links */
       }
 
       * {
@@ -27,7 +34,7 @@
 
       body {
         margin: 0;
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         color: var(--text);
         line-height: 1.6;
         background: #fff;
@@ -36,6 +43,9 @@
       a {
         color: var(--link);
         text-decoration: none;
+      }
+      .pub-title a:hover {
+        text-decoration: none; /* no underline on hover */
       }
       a:hover {
         text-decoration: underline;
@@ -58,15 +68,10 @@
         min-width: 280px;
       }
       .intro-text h1 {
-        margin-top: 0;
-        margin-bottom: 0.5rem;
+        margin: 0 0 0.5rem 0;
         font-size: 2rem;
         font-weight: 700;
       }
-      .intro-text p {
-        margin: 0 0 1rem;
-      }
-
       .avatar {
         flex: 0 0 220px;
         width: 220px;
@@ -82,9 +87,10 @@
         gap: 0.35rem;
         font-weight: 500;
         margin-right: 1.5rem;
+        color: var(--contact-link); /* Changed to blue for contact links */
       }
       .contact-links i {
-        font-size: 0.95rem;
+        font-size: 1.05rem;
       }
 
       /* Publications */
@@ -103,10 +109,11 @@
         margin-bottom: 2.25rem;
         align-items: flex-start;
       }
+      /* Wider thumbnails */
       .pub-thumb {
-        flex: 0 0 120px;
-        width: 120px;
-        height: 120px;
+        flex: 0 0 220px;
+        width: 220px;
+        height: 140px;
         object-fit: cover;
         border: 1px solid var(--border);
         border-radius: 4px;
@@ -130,16 +137,21 @@
         font-style: italic;
       }
 
+      /* Buttons – anchor and button share class */
       .btn {
-        display: inline-block;
-        padding: 0.2rem 0.8rem;
-        margin-right: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem 0.9rem;
         border: 1px solid var(--border);
         border-radius: 4px;
         font-size: 0.8rem;
         font-weight: 500;
         background: #fff;
         color: var(--text);
+        cursor: pointer;
+        min-width: 64px; /* keep equal width look */
+        line-height: 1.2;
       }
       .btn:hover {
         background: #f3f4f6;
@@ -150,26 +162,25 @@
         display: none;
         position: fixed;
         z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
       }
 
       .modal-content {
         background-color: #fff;
-        margin: 15% auto;
+        margin: 8% auto;
         padding: 20px;
         border-radius: 4px;
-        width: 80%;
-        max-width: 600px;
+        width: 90%;
+        max-width: 700px;
         position: relative;
       }
 
       .close {
         color: #aaa;
-        float: right;
+        position: absolute;
+        top: 12px;
+        right: 16px;
         font-size: 28px;
         font-weight: bold;
         cursor: pointer;
@@ -178,10 +189,39 @@
         color: #000;
       }
 
-      /* Responsive tweak */
+      .modal-content pre {
+        margin-top: 1rem;
+        white-space: pre; /* preserve spaces & newlines */
+        overflow-x: auto; /* horizontal scroll if needed */
+        background: #fdfcff;
+        padding: 1rem;
+        border-radius: 4px;
+      }
+
+      /* Copy icon button */
+      .copy-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--text);
+        position: absolute;
+        top: 12px;
+        right: 52px; /* leave space for close icon */
+      }
+      .copy-btn:hover {
+        color: var(--link);
+      }
+
+      /* Responsive */
       @media (max-width: 640px) {
         .avatar {
           margin: 0 auto;
+        }
+        .pub-thumb {
+          flex: 0 0 160px;
+          width: 160px;
+          height: 110px;
         }
       }
     </style>
@@ -192,31 +232,16 @@
       <section class="intro">
         <div class="intro-text">
           <h1>Aditya Tomar</h1>
-          <p>
-            I'm a 3rd-year undergraduate at UC Berkeley, studying Computer Science.
-          </p>
+          <p>I'm a 3rd‑year undergraduate at UC Berkeley, studying Computer Science.</p>
 
-          <!-- Contact links with icons -->
+          <!-- Contact links -->
           <p class="contact-links">
-            <a href="mailto:adityatomar@berkeley.edu">
-              <span class="icon"><i class="fas fa-envelope"></i></span>
-              Email
-            </a>
-            <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en/" target="_blank" rel="noopener">
-              <span class="icon"><i class="fas fa-graduation-cap"></i></span>
-              Google Scholar
-            </a>
-            <a href="https://www.linkedin.com/in/aditya-s-tomar/" target="_blank" rel="noopener">
-              <span class="icon"><i class="fab fa-linkedin"></i></span>
-              LinkedIn
-            </a>
-            <a href="https://x.com/adityastomar_" target="_blank" rel="noopener">
-              <span class="icon"><i class="fab fa-twitter"></i></span>
-              Twitter
-            </a>
+            <a href="mailto:adityatomar@berkeley.edu"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://scholar.google.com/citations?user=hda-kVkAAAAJ&hl=en" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+            <a href="https://www.linkedin.com/in/aditya-s-tomar/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://x.com/adityastomar_" target="_blank" rel="noopener"><i class="fab fa-twitter"></i> Twitter</a>
           </p>
         </div>
-        <!-- Square avatar -->
         <img src="media/adityatomar.jpg" alt="Aditya Tomar" class="avatar" />
       </section>
 
@@ -224,20 +249,15 @@
       <section id="publications">
         <h2>publications</h2>
 
-        <!-- Publication 1 -->
         <article class="pub-item">
           <img src="media/quantspec_thumbnail.png" alt="QuantSpec thumbnail" class="pub-thumb" />
           <div class="pub-info">
-            <h3 class="pub-title">
-              <a href="#">QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache</a>
-            </h3>
-            <p class="pub-authors">
-              Rishabh Tiwari*, Haocheng Xi*, Aditya Tomar*, Coleman Hooper, Sehoon Kim, Maxwell Horton, Mahyar Najibi, Michael W. Mahoney, Kurt Keutzer, Amir Gholami
-            </p>
+            <h3 class="pub-title"><a href="#">QuantSpec: Self‑Speculative Decoding with Hierarchical Quantized KV Cache</a></h3>
+            <p class="pub-authors">Rishabh Tiwari*, Haocheng Xi*, <b>Aditya Tomar*</b>, Coleman Hooper, Sehoon Kim, Maxwell Horton, Mahyar Najibi, Michael W. Mahoney, Kurt Keutzer, Amir Gholami</p>
             <p class="pub-venue"><em>ICML, 2025</em></p>
             <div class="pub-links">
-              <a href="#" class="btn" onclick="showBibModal()">BIB</a>
-              <a href="https://openreview.net/pdf?id=7SHbJENgHX" class="btn">PDF</a>
+              <button class="btn" onclick="showBibModal()">BIB</button>
+              <a href="https://openreview.net/pdf?id=7SHbJENgHX" class="btn" target="_blank">PDF</a>
             </div>
           </div>
         </article>
@@ -245,16 +265,17 @@
     </div>
 
     <!-- Citation Modal -->
-    <div id="bibModal" class="modal">
+    <div id="bibModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel">
       <div class="modal-content">
-        <span class="close" onclick="closeBibModal()">&times;</span>
-        <h3>Citation</h3>
-        <pre>@inproceedings{tiwari2025quantspec,
-  title={QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache},
-  author={Tiwari, Rishabh and Xi, Haocheng and Tomar, Aditya and Hooper, Coleman and Kim, Sehoon and Horton, Maxwell and Najibi, Mahyar and Mahoney, Michael W and Keutzer, Kurt and Gholami, Amir},
-  booktitle={International Conference on Machine Learning},
-  year={2025}
-}</pre>
+        <button class="copy-btn" onclick="copyBib()" title="Copy to clipboard" aria-label="Copy"><i class="fas fa-copy"></i></button>
+        <span class="close" onclick="closeBibModal()" aria-label="Close">&times;</span>
+        <h3 id="bibLabel">Citation</h3>
+        <pre id="bibText">@inproceedings{tiwari2025quantspec,
+          title={QuantSpec: Self-Speculative Decoding with Hierarchical Quantized KV Cache},
+          author={Tiwari, Rishabh and Xi, Haocheng and Tomar, Aditya and Hooper, Coleman and Kim, Sehoon and Horton, Maxwell and Najibi, Mahyar and Mahoney, Michael W and Keutzer, Kurt and Gholami, Amir},
+          booktitle={International Conference on Machine Learning},
+          year={2025}
+        }</pre>
       </div>
     </div>
 
@@ -262,13 +283,19 @@
       function showBibModal() {
         document.getElementById('bibModal').style.display = 'block';
       }
-
       function closeBibModal() {
         document.getElementById('bibModal').style.display = 'none';
       }
-
+      function copyBib() {
+        const text = document.getElementById('bibText').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Citation copied to clipboard');
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+      }
       window.onclick = function (event) {
-        var modal = document.getElementById('bibModal');
+        const modal = document.getElementById('bibModal');
         if (event.target === modal) {
           modal.style.display = 'none';
         }
