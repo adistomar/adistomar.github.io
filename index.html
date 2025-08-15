@@ -152,13 +152,13 @@
         <h1>Aditya Tomar</h1>
         <p>I'm a 3rd year undergraduate at UC Berkeley studying Computer Science.</p>
         <br>
-        <p>My research broadly lies in efficient maching learning with a focus on inference and quantization.
+        <p>My research broadly lies in machine learning systems with a focus on efficient inference.
           Currently, I'm working at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a> under
           <a href="https://people.eecs.berkeley.edu/~keutzer/" target="_blank" rel="noopener">Prof. Kurt&nbsp;Keutzer</a>.
           Previously, I had the pleasure of working under
           <a href="https://www.cs.umd.edu/~bhatele/" target="_blank" rel="noopener">Prof. Abhinav&nbsp;Bhatele</a>
           at <a href="https://pssg.cs.umd.edu/" target="_blank" rel="noopener">PSSG</a> on memory-efficient adaptive
-          optimisation algorithms and efficient parallel training methods for LLMs.
+          optimization algorithms and efficient parallel training methods for LLMs.
         </p>
 
         <br>
@@ -185,9 +185,34 @@
 
     <!-- ── PUBLICATIONS ──────────────────────────────────── -->
     <section id="publications">
-      <h2>publications</h2>
+      <h2>research</h2>
       <p style="font-size: 0.85rem; color: var(--muted);">* = equal contribution</p>
       <br> 
+
+      <article class="pub-item">
+        <img src="media/xquant_thumbnail.png" alt="XQuant thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">XQuant: Breaking the Memory Wall for LLM Inference with KV Cache Rematerialization</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="self">Aditya&nbsp;Tomar*</span>,
+            <span class="other">Coleman&nbsp;Hooper*</span>,
+            <span class="other">Minjae&nbsp;Lee</span>,
+            <span class="other">Haocheng&nbsp;Xi</span>,
+            <span class="other">Rishabh&nbsp;Tiwari</span>,
+            <span class="other">Wonjun&nbsp;Kang</span>,
+            <span class="other">Luca&nbsp;Manolache</span>,
+            <span class="other">Michael&nbsp;W.&nbsp;Mahoney</span>,
+            <span class="other">Kurt&nbsp;Keutzer</span>,
+            <span class="other">Amir&nbsp;Gholami</span>
+          </p>
+          <p class="pub-venue">Preprint</p>
+
+          <button class="btn" onclick="showBibModal5()">BIB</button>
+          <a class="btn" href="https://arxiv.org/pdf/2508.10395" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
 
       <article class="pub-item">
         <img src="media/quantspec_thumbnail.png" alt="QuantSpec thumbnail" class="pub-thumb">
@@ -245,6 +270,44 @@
       </article>
 
       <article class="pub-item">
+        <img src="media/eve_thumbnail.png" alt="Eve thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Eve: Less Memory, Same Might</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="self">Aditya&nbsp;Tomar</span>,
+            <span class="other">Siddharth&nbsp;Singh</span>,
+            <span class="other">Tom&nbsp;Goldstein</span>,
+            <span class="other">Abhinav&nbsp;Bhatele</span>
+          </p>
+          <p class="pub-venue">(ACM SRC Poster) SC&nbsp;2024</p>
+      
+          <button class="btn" onclick="showBibModal4()">BIB</button>
+          <a class="btn" href="https://sc24.supercomputing.org/proceedings/poster/poster_files/post116s2-file3.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub-item">
+        <img src="media/icl_encryption_thumbnail.png" alt="Transformers Encryption thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Can Transformers Break Encryption Schemes via In-Context Learning?</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="other">Jathin&nbsp;Korrapati*</span>,
+            <span class="other">Patrick&nbsp;Mendoza*</span>,
+            <span class="self">Aditya&nbsp;Tomar*</span>,
+            <span class="other">Abein&nbsp;Abraham*</span>
+          </p>
+          <p class="pub-venue">(Course Project) Preprint</p>
+      
+          <button class="btn" onclick="showBibModal6()">BIB</button>
+          <a class="btn" href="https://arxiv.org/pdf/2508.10235" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub-item">
         <img src="media/chopper_thumbnail.png" alt="Programmatic Performance thumbnail" class="pub-thumb">
         <div class="pub-info">
           <h3 class="pub-title">
@@ -262,25 +325,6 @@
       
           <button class="btn" onclick="showBibModal3()">BIB</button>
           <a class="btn" href="https://arxiv.org/pdf/2401.13150" target="_blank" rel="noopener">PDF</a>
-        </div>
-      </article>
-
-      <article class="pub-item">
-        <img src="media/eve_thumbnail.png" alt="Eve thumbnail" class="pub-thumb">
-        <div class="pub-info">
-          <h3 class="pub-title">
-            <a href="#">Eve: Less Memory, Same Might</a>
-          </h3>
-          <p class="pub-authors">
-            <span class="self">Aditya&nbsp;Tomar</span>,
-            <span class="other">Siddharth&nbsp;Singh</span>,
-            <span class="other">Tom&nbsp;Goldstein</span>,
-            <span class="other">Abhinav&nbsp;Bhatele</span>
-          </p>
-          <p class="pub-venue">(ACM SRC Poster) SC&nbsp;2024</p>
-      
-          <button class="btn" onclick="showBibModal4()">BIB</button>
-          <a class="btn" href="https://sc24.supercomputing.org/proceedings/poster/poster_files/post116s2-file3.pdf" target="_blank" rel="noopener">PDF</a>
         </div>
       </article>
 
@@ -366,6 +410,46 @@
     </div>
   </div>
 
+  <div id="bibModal5" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel5">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib5()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal5()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel5">Citation</h3>
+  <pre id="bibText5">@misc{tomar2025xquantbreakingmemorywall,
+      title         = {XQuant: Breaking the Memory Wall for LLM Inference with KV Cache Rematerialization}, 
+      author        = {Aditya Tomar and Coleman Hooper and Minjae Lee and Haocheng Xi and Rishabh Tiwari and Wonjun Kang and Luca Manolache and Michael W. Mahoney and Kurt Keutzer and Amir Gholami},
+      year          = {2025},
+      eprint        = {2508.10395},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.LG},
+      url           = {https://arxiv.org/abs/2508.10395}, 
+}</pre>
+    </div>
+  </div>
+
+  <div id="bibModal6" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel6">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib6()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal6()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel6">Citation</h3>
+  <pre id="bibText6">@misc{korrapati2025transformersbreakencryptionschemes,
+      title         = {Can Transformers Break Encryption Schemes via In-Context Learning?}, 
+      author        = {Jathin Korrapati and Patrick Mendoza and Aditya Tomar and Abein Abraham},
+      year          = {2025},
+      eprint        = {2508.10235},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.LG},
+      url           = {https://arxiv.org/abs/2508.10235}, 
+}</pre>
+    </div>
+  </div>
+
 
 
 
@@ -405,11 +489,30 @@
         .catch(err=>console.error('Copy failed',err));
     }
 
+    function showBibModal5(){ document.getElementById('bibModal5').style.display='block'; }
+    function closeBibModal5(){ document.getElementById('bibModal5').style.display='none'; }
+    function copyBib5(){
+      navigator.clipboard.writeText(document.getElementById('bibText5').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
+
+    function showBibModal6(){ document.getElementById('bibModal6').style.display='block'; }
+    function closeBibModal6(){ document.getElementById('bibModal6').style.display='none'; }
+    function copyBib6(){
+      navigator.clipboard.writeText(document.getElementById('bibText6').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
+
 
     /* close modal when backdrop clicked */
     window.addEventListener('click',e=>{
-      const m=document.getElementById('bibModal');
-      if(e.target===m) m.style.display='none';
+      const modals = ['bibModal', 'bibModal2', 'bibModal3', 'bibModal4', 'bibModal5', 'bibModal6'];
+      modals.forEach(modalId => {
+        const m = document.getElementById(modalId);
+        if(e.target === m) m.style.display = 'none';
+      });
     });
   </script>
 </body>
