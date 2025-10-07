@@ -150,7 +150,7 @@
     <section class="intro">
       <div class="intro-text">
         <h1>Aditya Tomar</h1>
-        <p>I'm a 3rd year undergraduate at UC Berkeley studying Computer Science.</p>
+        <p>I'm a 3rd year undergraduate at UC Berkeley studying EECS.</p>
         <br>
         <p>My research broadly lies in machine learning systems with a focus on efficient inference.
           Currently, I'm working at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a> under
@@ -172,6 +172,9 @@
           </a>
           <a href="https://x.com/adityastomar_" target="_blank" rel="noopener">
             <img src="media/twitter_icon.png" class="icon" alt="Twitter icon">Twitter
+          </a>
+          <a href="https://github.com/adistomar" target="_blank" rel="noopener">
+            <img src="media/github_icon.png" class="icon" alt="GitHub icon">GitHub
           </a>
         </div>
       </div>
@@ -289,6 +292,29 @@
       </article>
 
       <article class="pub-item">
+        <img src="media/diffusion_analysis_thumbnail.png" alt="Diffusion vs Autoregressive thumbnail" class="pub-thumb">
+        <div class="pub-info">
+          <h3 class="pub-title">
+            <a href="#">Beyond Next-Token Prediction: A Performance Characterization of Diffusion versus Autoregressive Language Models</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="other">Minseo&nbsp;Kim</span>,
+            <span class="other">Coleman&nbsp;Hooper</span>,
+            <span class="self">Aditya&nbsp;Tomar</span>,
+            <span class="other">Chenfeng&nbsp;Xu</span>,
+            <span class="other">Mehrdad&nbsp;Farajtabar</span>,
+            <span class="other">Michael&nbsp;W.&nbsp;Mahoney</span>,
+            <span class="other">Kurt&nbsp;Keutzer</span>,
+            <span class="other">Amir&nbsp;Gholami</span>
+          </p>
+          <p class="pub-venue">Preprint</p>
+      
+          <button class="btn" onclick="showBibModal7()">BIB</button>
+          <a class="btn" href="https://arxiv.org/pdf/2510.04146" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub-item">
         <img src="media/icl_encryption_thumbnail.png" alt="Transformers Encryption thumbnail" class="pub-thumb">
         <div class="pub-info">
           <h3 class="pub-title">
@@ -391,6 +417,26 @@
     primaryClass  = {cs.DC},
     url           = {https://arxiv.org/abs/2401.13150}
   }</pre>
+    </div>
+  </div>
+
+  <div id="bibModal7" class="modal" role="dialog" aria-modal="true" aria-labelledby="bibLabel7">
+    <div class="modal-content">
+      <button class="copy-btn" onclick="copyBib7()" title="Copy to clipboard" aria-label="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <span class="close" onclick="closeBibModal7()" aria-label="Close">&times;</span>
+  
+      <h3 id="bibLabel7">Citation</h3>
+  <pre id="bibText7">@misc{kim2025nexttokenpredictionperformancecharacterization,
+      title={Beyond Next-Token Prediction: A Performance Characterization of Diffusion versus Autoregressive Language Models}, 
+      author={Minseo Kim and Coleman Hooper and Aditya Tomar and Chenfeng Xu and Mehrdad Farajtabar and Michael W. Mahoney and Kurt Keutzer and Amir Gholami},
+      year={2025},
+      eprint={2510.04146},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2510.04146}, 
+}</pre>
     </div>
   </div>
 
@@ -505,10 +551,18 @@
         .catch(err=>console.error('Copy failed',err));
     }
 
+    function showBibModal7(){ document.getElementById('bibModal7').style.display='block'; }
+    function closeBibModal7(){ document.getElementById('bibModal7').style.display='none'; }
+    function copyBib7(){
+      navigator.clipboard.writeText(document.getElementById('bibText7').innerText)
+        .then(()=>alert('Citation copied to clipboard ✅'))
+        .catch(err=>console.error('Copy failed',err));
+    }
+
 
     /* close modal when backdrop clicked */
     window.addEventListener('click',e=>{
-      const modals = ['bibModal', 'bibModal2', 'bibModal3', 'bibModal4', 'bibModal5', 'bibModal6'];
+      const modals = ['bibModal', 'bibModal2', 'bibModal3', 'bibModal4', 'bibModal5', 'bibModal6', 'bibModal7'];
       modals.forEach(modalId => {
         const m = document.getElementById(modalId);
         if(e.target === m) m.style.display = 'none';
