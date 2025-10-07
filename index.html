@@ -66,7 +66,7 @@
     .contact-links img.icon{width:18px;height:18px;object-fit:contain}
 
     /* ───────── PUBLICATIONS ───────── */
-    #publications{margin-top:3rem}
+    #publications{margin-top:.75rem}
     #publications h2{font-size:1.75rem;font-weight:600;margin-bottom:0.4rem}
 
     .pub-item{display:flex;gap:1.25rem;margin-bottom:2.25rem;align-items:flex-start}
@@ -133,6 +133,24 @@
       font-style: italic;
     }
 
+    /* ───────── TABS ───────── */
+    .tabs{display:flex;justify-content:flex-start;gap:2rem;margin-top:2.5rem;border-bottom:0}
+    .tab{
+      appearance:none;background:none;border:none;padding:.4rem .25rem;margin:0;
+      font-size:1.6rem;font-weight:600; /* header-like bolding */
+      color:var(--muted);opacity:.55;cursor:pointer
+    }
+    .tab[aria-selected="true"]{color:var(--text);opacity:1;border-bottom:2px solid var(--brand-blue)}
+    .tab:focus-visible{outline:2px solid var(--brand-blue);outline-offset:2px}
+    .tab-panel[hidden]{display:none}
+
+    /* ───────── AWARDS LIST ───────── */
+    .awards-list{display:flex;flex-direction:column;gap:1rem;margin-top:1.25rem}
+    .award-item{display:grid;grid-template-columns:64px 1fr;align-items:start}
+    .award-year{font-weight:500;color:var(--muted)}
+    .award-title{font-weight:700}
+    .award-sub{margin-top:.25rem;color:var(--muted);font-size:.95rem}
+
     /* ───────── SMALL SCREENS ───────── */
     @media (max-width:640px){
       .intro-side{margin-inline:auto}
@@ -186,9 +204,14 @@
       </div>
     </section>
 
+    <!-- ── TABS NAVIGATION ───────────────────────────────── -->
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-research" aria-selected="true" aria-controls="publications">research</button>
+      <button class="tab" role="tab" id="tab-awards" aria-selected="false" aria-controls="awards">awards</button>
+    </nav>
+
     <!-- ── PUBLICATIONS ──────────────────────────────────── -->
-    <section id="publications">
-      <h2>research</h2>
+    <section id="publications" role="tabpanel" aria-labelledby="tab-research" class="tab-panel">
       <p style="font-size: 0.85rem; color: var(--muted);">* = equal contribution</p>
       <br> 
 
@@ -357,6 +380,66 @@
 
 
     </section><!-- /publications -->
+
+    <!-- ── AWARDS (PLACEHOLDER) ──────────────────────────── -->
+    <section id="awards" role="tabpanel" aria-labelledby="tab-awards" class="tab-panel" hidden>
+      <div class="awards-list">
+        <div class="award-item">
+          <div class="award-year">2025</div>
+          <div>
+            <div class="award-title">EECS Evergreen Undergraduate Research Award</div>
+            <div class="award-sub">$300 award recognizing initiative in engaging in research as an undergraduate</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2024</div>
+          <div>
+            <div class="award-title">ACM Gordon Bell Prize Finalist</div>
+            <div class="award-sub">Chosen as a finalist at SC'24 for outstanding achievement in high-performance computing</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2024</div>
+          <div>
+            <div class="award-title">ACM SIGHPC Travel Grant Award</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2024</div>
+          <div>
+            <div class="award-title">TCHPC/TCPP Travel Grant Award</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2023</div>
+          <div>
+            <div class="award-title">Regents’ and Chancellor’s Scholarship</div>
+            <div class="award-sub">UC Berkeley’s most prestigious undergraduate scholarship, awarded to top 1% of admitted students</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2023</div>
+          <div>
+            <div class="award-title">Leadership Award</div>
+            <div class="award-sub">$2000 award recognizing innovative, initiative-driven leadership at UC Berkeley</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2022</div>
+          <div>
+            <div class="award-title">National Merit Scholarship Winner</div>
+            <div class="award-sub">Scored top 1% nationwide on PSAT and received a $2500 award from NVIDIA</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-year">2021</div>
+          <div>
+            <div class="award-title">Stack Overflow Top 0.01% Contributor</div>
+            <div class="award-sub">100+ answers, helped 120k+ people, 10k+ interactions on individual posts</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </div><!-- /wrapper -->
 
@@ -558,6 +641,23 @@
         .then(()=>alert('Citation copied to clipboard ✅'))
         .catch(err=>console.error('Copy failed',err));
     }
+
+    /* tabs switching */
+    const tabResearch = document.getElementById('tab-research');
+    const tabAwards = document.getElementById('tab-awards');
+    function activateTab(targetTab){
+      const tabs = [tabResearch, tabAwards];
+      tabs.forEach(tab=>{
+        if(!tab) return;
+        const isTarget = tab === targetTab;
+        tab.setAttribute('aria-selected', String(isTarget));
+        const panelId = tab.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        if(panel){ panel.hidden = !isTarget; }
+      });
+    }
+    tabResearch && tabResearch.addEventListener('click',()=>activateTab(tabResearch));
+    tabAwards && tabAwards.addEventListener('click',()=>activateTab(tabAwards));
 
 
     /* close modal when backdrop clicked */
